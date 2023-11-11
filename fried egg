@@ -1,0 +1,78 @@
+var x = getWidth();
+var y = getHeight();
+
+var PAN_RADIUS = getWidth()/3;
+var HANDLE_WIDTH = getWidth()/2;
+var HANDLE_HEIGHT = HANDLE_WIDTH/4;
+var PAN_COLOR = Color.GRAY;
+
+var PAN_BOTTOM_RADIUS = PAN_RADIUS-20;
+var PAN_BOTTOM_COLOR = Color.BLACK;
+
+var EGG_RADIUS = PAN_BOTTOM_RADIUS/4;
+var EGG_WHITE_RADIUS = EGG_RADIUS+20;
+var whitePlace = x/2-20;
+var whiteHeight = y/2-25;
+var EGG_WHITE_COLOR = Color.WHITE;
+var EGG_YOLK_COLOR = Color.YELLOW; 
+
+var HIGHLIGHT_RADIUS = EGG_RADIUS/4;
+var HIGHLIGHT_COLOR = Color.WHITE;
+
+
+function start() {
+pan();
+egg();
+
+}
+
+// adds in the pan 
+function pan(){
+// adds pan
+    var pan = new Circle(PAN_RADIUS);
+    pan.setPosition(x/2,y/2);
+    pan.setColor(PAN_COLOR);
+    add(pan);
+// adds handle
+    var handle = new Rectangle(HANDLE_WIDTH,HANDLE_HEIGHT);
+    handle.setPosition(x/2+20,y/2-25);
+    handle.setColor(PAN_COLOR);
+    add(handle);
+// adds bottom of pan 
+    var bottom = new Circle(PAN_BOTTOM_RADIUS);
+    bottom.setPosition(x/2,y/2);
+    bottom.setColor(PAN_BOTTOM_COLOR);
+    add(bottom);
+}
+
+// adds the egg
+function egg(){
+// both vars add 4 circles in total for the egg whites
+    for(var i = 0; i < 2; i++){
+     var eggWhite1 = new Circle(EGG_WHITE_RADIUS);  
+     eggWhite1.setPosition(whitePlace+i*1*EGG_WHITE_RADIUS,y/2);
+     eggWhite1.setColor(EGG_WHITE_COLOR);
+     add(eggWhite1);
+    }
+    for(var i = 0; i < 2; i++){
+     var eggWhite2 = new Circle(EGG_WHITE_RADIUS);
+     eggWhite2.setPosition(x/2,whiteHeight+i*1*EGG_WHITE_RADIUS);
+     eggWhite2.setColor(EGG_WHITE_COLOR);
+     add(eggWhite2);
+    }
+// adds egg yolk 
+    var yolk = new Circle(EGG_RADIUS);
+    yolk.setPosition(x/2,y/2);
+    yolk.setColor(EGG_YOLK_COLOR);
+    add(yolk);
+    
+// adds highlight
+    var hL =  new Circle(HIGHLIGHT_RADIUS);
+    hL.setPosition(x/2+10,y/2-10);
+    hL.setColor(HIGHLIGHT_COLOR);
+    add(hL);
+    
+    
+    
+    
+}
